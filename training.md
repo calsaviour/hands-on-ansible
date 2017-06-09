@@ -128,4 +128,11 @@ ntp: ntp-west.company.com
 syslog: logger-west-company.com
 
 
+## Demo : Scaling out with Multiple Files
+Create the group variable username in the group_vars file
+
+run command ansible webservers -i inventory_prod -m user -a "name={{username}} password=12345" --sudo
+
+
+
 
