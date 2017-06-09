@@ -90,3 +90,42 @@ ansible_ssh_pass=vagrant
 run command ansible datacenter -i inventory -m ping
 
 
+## Scaling out with Multiple Files
+Using directories to manage
+
+|__production
+|	|
+|	|--------group_vars
+|	|	\all
+|	|	\db	
+|	|--------host_vars
+|	|   \web1
+|   |--------inventory_prod
+|__test
+|	|
+|	|--------group_vars
+|	|	\all
+|	|	\db	
+|	|--------host_vars
+|	|   \web1
+|   |--------inventory+test
+
+
+Order of Operations (Precedence)
+1. Group_Vars - All
+2. Group_Vars - GroupName
+3. Host_Vars Hostname (The highest precedence)
+
+ --The most specific version of that variable is actually going to take the highest level of precedence.
+
+-- variable files are written in YAML file
+
+Eg of variable file
+
+---
+# file : group_vars/dc1-west
+ntp: ntp-west.company.com
+syslog: logger-west-company.com
+
+
+
