@@ -134,5 +134,16 @@ Create the group variable username in the group_vars file
 run command ansible webservers -i inventory_prod -m user -a "name={{username}} password=12345" --sudo
 
 
+## Ansible Configuration
+## To configure fingerprint for ssh
+1. touch ansible.cfg
+2. [defaults] host_key_checking=False
+3. ansible web1 -i inventory_prod -m ping
+
+## Ansible Environment Variable Takes Precedence over Ansible Configuration
+
+1. export ANSIBLE_HOST_KEY_CHECKING=True
+2. ansible web1 -i inventory_prod -m ping 
+
 
 
