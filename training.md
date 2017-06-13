@@ -220,3 +220,33 @@ ansible webservers:dbservers -i inventory -m service -a "name=iptables state=sto
 2. run command ansible web1 -i inventory -m setup -a "filter=ansible_eth*"
 3. run command ansible web1 -i inventory -m setup -a "filter=ansible_mounts"
 4. run command ansible all -i inventory -m setup --tree ./setup
+
+## Plays and Playbooks
+Plays map hosts to tasks
+A play can have multiple tasks
+A playbook can have multiple plays
+
+1. run command to execute playbook
+ansible-playbook playbook.yml
+
+## Example
+refer to example.yml
+
+## Demo: Basic Playbook
+- Write a playbook
+- Add play to install web server
+- Add play to install db server
+- Add play to start services
+- Fail a play
+- Retry a failed play
+
+1. Create ansible.cfg. Refer to PlaybookDemo/ansible.cfg
+2. run command ansible-playbook web_db.yml
+3. in the case of failure can just rerun the fail case
+   eg: run command ansible-playbook web_db.yaml --limit @/home/vagrant/web_db.yaml.retry
+
+ - Templates
+ 	- Creates and copies dynamic files
+ 	- Uses Jinja2 Engine
+
+ ## Demo: Advanceed Playbook Usage 

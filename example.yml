@@ -1,0 +1,16 @@
+---
+- hosts: webservers
+  remote_user: root
+  tasks:
+  - name: Install Apache
+    yum: name=httpd state=present
+  - name: Start Apache
+    service: name=httpd state=started
+
+- hosts: dbservers
+  remote_user: root
+  tasks:
+  - name: Install MySQL
+    yum: name=mysql-server state=present
+  - name: Start MySQL
+    service: name=mysqld state=started  
