@@ -143,7 +143,37 @@ run command ansible webservers -i inventory_prod -m user -a "name={{username}} p
 ## Ansible Environment Variable Takes Precedence over Ansible Configuration
 
 1. export ANSIBLE_HOST_KEY_CHECKING=True
-2. ansible web1 -i inventory_prod -m ping 
+2. ansible web1 -i inventory_prod -m ping
 
+
+## Ansible Modules.
+There are 3 kinds of modules : Core, Extras and Deprecated
+
+1. To list modile run ansible-doc -l
+1. To list modile run ansible-doc -s <name>
+1. To list modile run ansible-doc <name>
+
+### Copy Module
+Copies a file from local box to remote system
+Has "backup" capability
+Can do validation remotely
+
+### Fetch Module
+Pulls a file from remote host to local system
+Can use md5 checksums to validate
+
+### Apt Module
+Manages installed applications on Debian-based systems
+Can install, update or delete packages
+Can update entire system
+
+### Yum Module
+Manages installed applications on Redhat-based systems
+Can install, update or delete packages
+Can update entire system
+
+### Service Module
+Can stop, start and restart services
+Can enable services to start on boot
 
 
