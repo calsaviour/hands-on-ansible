@@ -212,3 +212,11 @@ ansible webservers:dbservers -i inventory -m service -a "name=iptables state=sto
 4. Regex (~web[0-9]+)
 5. Complex Patterns AND (group1:&group2). Specific for intersection
 
+## Demo: Using Setup Module
+- Gather facts on remote systems
+- Used in Playbooks
+
+1. run command ansible web1 -i inventory -m setup
+2. run command ansible web1 -i inventory -m setup -a "filter=ansible_eth*"
+3. run command ansible web1 -i inventory -m setup -a "filter=ansible_mounts"
+4. run command ansible all -i inventory -m setup --tree ./setup
