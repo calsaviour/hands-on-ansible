@@ -176,4 +176,39 @@ Can update entire system
 Can stop, start and restart services
 Can enable services to start on boot
 
+## Demo: Using Modules to Install/Start
+- Browse module documentation
+- Install Web Server(Yum module)
+- Start Web Server(Service module)
+- Install db server(Yum module)
+- Start db server(Service module)
+- Stop firewalls (Service module)
+
+#### Install Web Server(Yum module)
+run command ansible webservers -i inventory -m yum -a "name=httpd state=present" --sudo
+
+
+#### Start Web Server(Service module)
+run command ansible webservers -i inventory -m service -a "name=httpd enabled=yes state=started" --sudo
+
+#### Install db server(Yum module)
+run command ansible dbservers -i inventory -m yum -a "name=mysql-server state=present" --sudo
+
+check the db state. run command service mysqld status
+
+#### Start db server(Service module)
+ansible dbservers -i inventory -m service -a "name=mysqld state=started" --sudo
+
+
+#### Stop firewalls (Service module)
+1. Browse http://192.168.33.20/
+2. run command to stop firewall
+ansible webservers:dbservers -i inventory -m service -a "name=iptables state=stopped" --sudo
+
+## Host/Group Target Patterns
+1. OR (group1:group2)_
+2. NOT (!group2)
+3. Wildcard (web*.ex.com)
+4. Regex (~web[0-9]+)
+5. Complex Patterns AND (group1:&group2). Specific for intersection
 
